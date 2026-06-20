@@ -38,7 +38,7 @@ class ProductAdapter(
         holder.txtName.text = product.name
         holder.txtCategory.text = product.category
         holder.txtRating.text = "⭐ ${product.rating}"
-        holder.txtPrice.text = "RM${product.price}"
+        holder.txtPrice.text = "RM%.2f".format(product.price)
 
 
         holder.itemView.setOnClickListener {

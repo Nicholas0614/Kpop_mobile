@@ -80,7 +80,7 @@ class ProductFormActivity : AppCompatActivity() {
 
             val name = intent.getStringExtra("name") ?: ""
             val category = intent.getStringExtra("category") ?: ""
-            val price = intent.getIntExtra("price", 0)
+            val price = intent.getDoubleExtra("price", 0.0)
             val description = intent.getStringExtra("description") ?: ""
             val image = intent.getIntExtra("image", R.drawable.ic_launcher_background)
 
@@ -112,7 +112,7 @@ class ProductFormActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val price = priceText.toInt()
+            val price = priceText.toDouble()
 
             if (isEdit) {
                 db.productDao().updateProduct(

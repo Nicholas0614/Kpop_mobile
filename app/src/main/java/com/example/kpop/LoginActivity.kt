@@ -34,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+
+
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
 
@@ -68,6 +70,8 @@ class LoginActivity : AppCompatActivity() {
                 .putString("name", user.name)
                 .apply()
 
+            mergeGuestCartToUser(user.id)
+
             if (user.role == "admin") {
                 startActivity(Intent(this, AdminActivity::class.java))
             } else {
@@ -75,6 +79,25 @@ class LoginActivity : AppCompatActivity() {
             }
 
             finish()
+        }
+    }
+
+    private fun mergeGuestCartToUser(realUserId: Int) {
+        val guestUserId = 0
+
+        val guestCartItems = db.cartDao().getCartItems(guestUserId)
+
+        for (guestItem in guestCartItems) {
+            val existingUserItem = db.cartDao().findCartItem(realUserId, guestItem.productId)
+
+            if (existingUserItem != null) {
+                existingUserItem.quantity += guestItem.quantity
+                db.cartDao().updateCartItem(existingUserItem)
+                db.cartDao().deleteCartItem(guestItem)
+            } else {
+                guestItem.userId = realUserId
+                db.cartDao().updateCartItem(guestItem)
+            }
         }
     }
 }

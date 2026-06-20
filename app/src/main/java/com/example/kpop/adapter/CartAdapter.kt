@@ -44,7 +44,7 @@ class CartAdapter(
         holder.imgProduct.setImageResource(cartItem.image)
         holder.txtName.text = cartItem.name
         holder.txtCategory.text = cartItem.category
-        holder.txtPrice.text = "RM${cartItem.price}"
+        holder.txtPrice.text = "RM%.2f".format(cartItem.price)
         holder.txtQuantity.text = cartItem.quantity.toString()
 
         holder.btnPlus.setOnClickListener {
@@ -99,8 +99,8 @@ class CartAdapter(
 
     override fun getItemCount(): Int = cartList.size
 
-    fun getTotalPrice(): Int {
-        var total = 0
+    fun getTotalPrice(): Double {
+        var total = 0.0
 
         for (item in cartList) {
             total += item.price * item.quantity

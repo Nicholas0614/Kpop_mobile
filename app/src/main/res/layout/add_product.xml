@@ -60,7 +60,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="15dp"
             android:hint="Price"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:background="@drawable/search_bg"
             android:paddingHorizontal="15dp" />
 

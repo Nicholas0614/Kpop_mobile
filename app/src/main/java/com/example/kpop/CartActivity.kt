@@ -131,7 +131,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun updateTotal() {
-        txtTotal.text = "RM${cartAdapter.getTotalPrice()}"
+        txtTotal.text = "RM%.2f".format(cartAdapter.getTotalPrice())
         checkEmptyCart()
     }
 

@@ -54,7 +54,7 @@ class ProductDetailActivity : AppCompatActivity() {
             id = intent.getIntExtra("id", 0),
             name = intent.getStringExtra("name") ?: "",
             category = intent.getStringExtra("category") ?: "",
-            price = intent.getIntExtra("price", 0),
+            price = intent.getDoubleExtra("price", 0.0),
             description = intent.getStringExtra("description") ?: "",
             rating = intent.getDoubleExtra("rating", 0.0),
             image = intent.getIntExtra("image", 0)

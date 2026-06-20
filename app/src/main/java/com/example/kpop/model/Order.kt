@@ -13,10 +13,10 @@ data class Order(
 
     val name: String,
     val category: String,
-    val price: Int,
+    val price: Double,
     val image: Int,
 
     val quantity: Int,
-    val totalPrice: Int,
+    val totalPrice: Double,
     val date: String
 )

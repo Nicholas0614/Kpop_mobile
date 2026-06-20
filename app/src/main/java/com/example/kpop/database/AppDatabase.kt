@@ -12,7 +12,7 @@ import com.example.kpop.model.User
 
 @Database(
     entities = [Product::class, CartEntity::class , User::class, Order::class, Review::class],
-    version = 6,
+    version = 8,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
