@@ -1,5 +1,7 @@
 package com.example.kpop.adapter
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,11 +48,20 @@ class OrderAdapter(
         val existingReview = reviewDao.getUserReview(userId, order.productId)
 
         if (existingReview != null) {
-            holder.btnReview.text = "Reviewed ✅"
+            holder.btnReview.text = "Reviewed"
             holder.btnReview.isEnabled = false
+            holder.btnReview.alpha = 1f
+            holder.btnReview.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#E5E5E5"))
+            holder.btnReview.setTextColor(Color.parseColor("#777777"))
+            holder.btnReview.setOnClickListener(null)
         } else {
             holder.btnReview.text = "Review"
             holder.btnReview.isEnabled = true
+            holder.btnReview.alpha = 1f
+            holder.btnReview.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#111111"))
+            holder.btnReview.setTextColor(Color.WHITE)
 
             holder.btnReview.setOnClickListener {
                 onReviewClick(order)
