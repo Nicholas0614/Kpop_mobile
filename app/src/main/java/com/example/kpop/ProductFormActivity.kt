@@ -9,6 +9,8 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.kpop.database.AppDatabase
 import com.example.kpop.model.Product
 
@@ -45,6 +47,17 @@ class ProductFormActivity : AppCompatActivity() {
         setContentView(R.layout.add_product)
 
         db = AppDatabase.getDatabase(this)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.productFormMain)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
+            insets
+        }
 
         val txtFormTitle = findViewById<TextView>(R.id.txtFormTitle)
         val etProductName = findViewById<EditText>(R.id.etProductName)
