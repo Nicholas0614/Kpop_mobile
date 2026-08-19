@@ -18,7 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/backk"/>
+            android:src="@drawable/outline_arrow_back_24"/>
 
         <TextView
             android:layout_width="wrap_content"

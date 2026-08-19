@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Top bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -28,37 +27,61 @@
 
                 <ImageButton
                     android:id="@+id/btnBack"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/backk"/>/>
+                    android:padding="7dp"
+                    android:src="@drawable/outline_arrow_back_24"
+                    app:tint="#111111"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="#1F2937"
-                    android:gravity="center" />
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/btnWishlist"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@android:color/transparent"
+                    android:padding="9dp"
+                    android:src="@drawable/favorite_border"
+                    app:tint="#111111"/>
+
                 <ImageButton
                     android:id="@+id/btnCart"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="4dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/baseline_shopping_cart_24" />
+                    android:padding="8dp"
+                    android:src="@drawable/baseline_shopping_cart_24"
+                    app:tint="#111111"/>
+
             </LinearLayout>
 
-            <!-- Product Image -->
-
-            <!-- Product info card -->
             <ImageView
                 android:id="@+id/imgProductDetail"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_margin="10dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/banner1" />
+                android:src="@drawable/banner1"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/productImageGallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"/>
+
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,57 +89,59 @@
                 android:layout_margin="16dp"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:padding="18dp"
-                >
+                android:padding="18dp">
 
                 <TextView
                     android:id="@+id/txtProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="BABYMONSTER - DRIP Album"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="#1F2937" />
+                    android:textColor="#111111"/>
+
+                <TextView
+                    android:id="@+id/txtProductGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:textColor="#777777"/>
 
                 <TextView
                     android:id="@+id/txtProductRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⭐ 4.9 (245 Reviews)"
+                    android:layout_marginTop="8dp"
                     android:textSize="14sp"
-                    android:textColor="#777777"
-                    android:layout_marginTop="8dp" />
+                    android:textColor="#777777"/>
 
                 <TextView
                     android:id="@+id/txtProductPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RM0"
+                    android:layout_marginTop="12dp"
                     android:textSize="28sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="12dp" />
+                    android:textColor="#111111"/>
 
                 <TextView
                     android:id="@+id/txtProductCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-
                     android:background="@drawable/category_label_bg"
-
-                    android:text="EXCLUSIVE"
                     android:textAllCaps="true"
-                    android:textColor="#00CBD1"
+                    android:textColor="#111111"
                     android:textStyle="bold"
                     android:textSize="10sp"
-
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"/>
+
             </LinearLayout>
 
-            <!-- Description card -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,8 +150,7 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:padding="18dp"
-                >
+                android:padding="18dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,17 +158,17 @@
                     android:text="Description"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#1F2937" />
+                    android:textColor="#111111"/>
 
                 <TextView
                     android:id="@+id/txtProductDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="The first full-length album from BABYMONSTER.\n\nIncludes:\n• CD\n• Photobook\n• Random Photocard\n• Poster"
+                    android:layout_marginTop="10dp"
                     android:textSize="15sp"
                     android:textColor="#555555"
-                    android:lineSpacingExtra="4dp"
-                    android:layout_marginTop="10dp" />
+                    android:lineSpacingExtra="4dp"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -156,8 +180,7 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:padding="18dp"
-                >
+                android:padding="18dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -165,87 +188,44 @@
                     android:text="Customer Reviews"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#1F2937" />
+                    android:textColor="#111111"/>
 
                 <TextView
                     android:id="@+id/txtReviewList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="No reviews yet."
                     android:textSize="15sp"
                     android:textColor="#555555"
-                    android:lineSpacingExtra="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:lineSpacingExtra="5dp"/>
 
             </LinearLayout>
 
-            <!-- Quantity card -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@color/white"
-                android:padding="18dp"
-                >
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Quantity"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1F2937" />
-
-                <ImageButton
-                    android:id="@+id/btnMinus"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:background="@drawable/minuss"/>
-
-                <TextView
-                    android:id="@+id/txtQuantity"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/btnPlus"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:background="@drawable/plus"/>
-            </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
-    <!-- Bottom fixed buttons -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="72dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        >
+        android:background="#FFFFFF"
+        android:padding="10dp">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/btnAddCart"
-            android:layout_width="0dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBuyNow"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleX="4"
-            android:scaleY="4"
-            app:lottie_fileName="addtocart_animation.json"
-            app:lottie_autoPlay="false"
-            app:lottie_loop="false"/>
+            android:text="Buy Now"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#111111"
+            app:cornerRadius="14dp"/>
 
     </LinearLayout>
 
 </LinearLayout>
-

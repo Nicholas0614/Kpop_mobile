@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/txtVariantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version A"
+            android:textColor="#111111"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtVariantStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Stock: 10"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtVariantPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Normal Price: RM59.90"
+            android:textColor="#111111"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditVariant"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="Edit"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnDeleteVariant"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="Delete"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="15dp"
+            android:background="#EEEEEE" />
+
+        <Switch
+            android:id="@+id/switchVariantSale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Variant On Sale" />
+
+        <EditText
+            android:id="@+id/etVariantSalePrice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Sale Price"
+            android:inputType="numberDecimal"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btnSaveVariantSale"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Save Variant Sale"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

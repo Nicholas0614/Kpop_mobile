@@ -1,63 +1,502 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/adminMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8F8F8">
+    android:background="#FFF7FB"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="20dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="35dp">
 
+        <!-- HEADER -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Admin Panel"
+                android:layout_weight="1"
+                android:text="Admin Dashboard"
+                android:textColor="#111111"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#111111"/>
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnAdminLogout"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Logout"
+                android:padding="9dp"
+                android:src="@drawable/baseline_logout_24"
+                app:tint="#111111" />
+
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnAddProduct"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@android:color/transparent"
-            android:padding="6dp"
-            android:src="@drawable/add" />
 
-        <ImageButton
-            android:id="@+id/btnAdminLogout"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="16dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/exit"
-            android:padding="6dp"/>
+        <!-- OVERVIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Overview"
+            android:textColor="#111111"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+
+        <!-- OVERVIEW ROW 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="115dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtTotalUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Users\n0"
+                    android:textColor="#111111"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="115dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtTotalProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Products\n0"
+                    android:textColor="#111111"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+        <!-- OVERVIEW ROW 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtProductsOnSale"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="On Sale\n0"
+                    android:textColor="#111111"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtTotalOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Orders\n0"
+                    android:textColor="#111111"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+        <!-- ORDER STATUS -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Order Status"
+            android:textColor="#111111"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+
+        <!-- ORDER STATUS ROW 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtPaidOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Paid\n0"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtProcessingOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Processing\n0"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+        <!-- ORDER STATUS ROW 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtShippedOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Shipped\n0"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8E1E5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/txtDeliveredOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Delivered\n0"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+        <!-- REVENUE -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E8E1E5"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/txtRevenue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Revenue\nRM0.00"
+                android:textColor="#111111"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ANALYTICS -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Analytics"
+            android:textColor="#111111"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Current order distribution"
+            android:textColor="#8B8286"
+            android:textSize="13sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E8E1E5"
+            app:strokeWidth="1dp">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/orderStatusChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- MANAGEMENT -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Management"
+            android:textColor="#111111"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Quick access to store controls"
+            android:textColor="#8B8286"
+            android:textSize="13sp" />
+
+
+        <!-- MANAGEMENT ROW 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageProducts"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                android:gravity="center"
+                android:text="Manage\nProducts"
+                android:textAllCaps="false"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="20dp"
+                app:strokeColor="#D9D1D5"
+                app:strokeWidth="1dp" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageOrders"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                android:gravity="center"
+                android:text="Manage\nOrders"
+                android:textAllCaps="false"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="20dp"
+                app:strokeColor="#D9D1D5"
+                app:strokeWidth="1dp" />
+
+        </LinearLayout>
+
+
+        <!-- MANAGEMENT ROW 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageCategories"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="7dp"
+                android:gravity="center"
+                android:text="Manage\nCategories"
+                android:textAllCaps="false"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="20dp"
+                app:strokeColor="#D9D1D5"
+                app:strokeWidth="1dp" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageGroups"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                android:gravity="center"
+                android:text="Manage\nK-pop Groups"
+                android:textAllCaps="false"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="20dp"
+                app:strokeColor="#D9D1D5"
+                app:strokeWidth="1dp" />
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnManageCoupons"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="Manage Coupons"
+            android:textAllCaps="false"
+            android:textColor="#111111"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FFFFFF"
+            app:cornerRadius="20dp"
+            app:strokeColor="#D9D1D5"
+            app:strokeWidth="1dp"/>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E5E5E5"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/adminProductRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="16dp"
-        android:clipToPadding="false"/>
-
-</LinearLayout>
+</ScrollView>

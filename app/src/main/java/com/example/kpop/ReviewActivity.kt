@@ -9,18 +9,30 @@ import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kpop.database.AppDatabase
-import com.example.kpop.model.Review
+import com.bumptech.glide.Glide
+import com.example.kpop.network.RetrofitClient
+import com.example.kpop.network.SessionManager
+import com.example.kpop.network.api.ProductApi
+import com.example.kpop.network.api.ReviewApi
+import com.example.kpop.network.model.ApiProduct
+import com.example.kpop.network.model.ApiReview
+import com.example.kpop.network.model.ReviewRequest
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ReviewActivity : AppCompatActivity() {
 
-    private lateinit var db: AppDatabase
+    private val reviewApi by lazy { RetrofitClient.create(this, ReviewApi::class.java) }
+
+    private val productApi by lazy{RetrofitClient.create(this, ProductApi::class.java)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review)
-
-        db = AppDatabase.getDatabase(this)
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val imgProduct = findViewById<ImageView>(R.id.imgProduct)
@@ -29,67 +41,88 @@ class ReviewActivity : AppCompatActivity() {
         val etComment = findViewById<EditText>(R.id.etComment)
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
 
-        val userId = getSharedPreferences("user_session", MODE_PRIVATE)
-            .getInt("userId", 0)
-
+        val userId = SessionManager(this).getUserId()
         val productId = intent.getIntExtra("productId", 0)
         val productName = intent.getStringExtra("productName") ?: ""
-        val image = intent.getIntExtra("image", 0)
 
-        imgProduct.setImageResource(image)
+        imgProduct.setImageResource(R.drawable.ic_launcher_background)
+
         txtProductName.text = productName
 
-        btnBack.setOnClickListener {
-            finish()
-        }
+        productApi.getProduct(productId).enqueue(object:Callback<ApiProduct>{
+            override fun onResponse(call:Call<ApiProduct>,response:Response<ApiProduct>){
+                val product=response.body()?:return
+                Glide.with(this@ReviewActivity).load(RetrofitClient.imageUrl(product.image)).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background).into(imgProduct)
+            }
+
+            override fun onFailure(call:Call<ApiProduct>,t:Throwable){}
+        })
+
+        btnBack.setOnClickListener { finish() }
 
         btnSubmit.setOnClickListener {
-
-            val rating = ratingBar.rating
+            val rating = ratingBar.rating.toDouble()
             val comment = etComment.text.toString().trim()
 
-
-            if (rating == 0f) {
-                Toast.makeText(this, "Please select a rating.", Toast.LENGTH_SHORT).show()
+            if (userId == 0) {
+                Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val existingReview = db.reviewDao().getUserReview(userId, productId)
-
-            if (existingReview != null) {
-                Toast.makeText(this, "You have already reviewed this product.", Toast.LENGTH_SHORT).show()
+            if (rating == 0.0) {
+                Toast.makeText(this, "Please select a rating", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val userName = getSharedPreferences("user_session", MODE_PRIVATE)
-                .getString("name", "") ?: ""
+            if (comment.isEmpty()) {
+                Toast.makeText(this, "Please write a comment", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            val currentDate = java.text.SimpleDateFormat(
-                "dd/MM/yyyy",
-                java.util.Locale.getDefault()
-            ).format(java.util.Date())
+            btnSubmit.isEnabled = false
 
-            db.reviewDao().insertReview(
-                Review(
-                    userId = userId,
-                    userName = userName,
-                    productId = productId,
-                    rating = rating,
-                    comment = comment,
-                    date = currentDate
-                )
-            )
+            reviewApi.getReviews(productId).enqueue(object : Callback<List<ApiReview>> {
+                override fun onResponse(call: Call<List<ApiReview>>, response: Response<List<ApiReview>>) {
+                    val alreadyReviewed = response.body()?.any { it.userId == userId } == true
 
-            val avgRating = db.reviewDao().getAverageRating(productId) ?: 0f
+                    if (alreadyReviewed) {
+                        btnSubmit.isEnabled = true
+                        Toast.makeText(this@ReviewActivity, "You already reviewed this product", Toast.LENGTH_SHORT).show()
+                        return
+                    }
 
-            db.productDao().updateProductRating(
-                productId,
-                avgRating.toDouble()
-            )
+                    submitReview(userId, productId, rating, comment, btnSubmit)
+                }
 
-            Toast.makeText(this, "Review submitted successfully!", Toast.LENGTH_SHORT).show()
-
-            finish()
+                override fun onFailure(call: Call<List<ApiReview>>, t: Throwable) {
+                    btnSubmit.isEnabled = true
+                    Toast.makeText(this@ReviewActivity, "Unable to check reviews", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
+    }
+
+    private fun submitReview(userId: Int, productId: Int, rating: Double, comment: String, button: Button) {
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val request = ReviewRequest(userId, productId, rating, comment, date)
+
+        reviewApi.addReview(request).enqueue(object : Callback<ApiReview> {
+            override fun onResponse(call: Call<ApiReview>, response: Response<ApiReview>) {
+                button.isEnabled = true
+
+                if (!response.isSuccessful) {
+                    Toast.makeText(this@ReviewActivity, response.errorBody()?.string() ?: "Review failed", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                Toast.makeText(this@ReviewActivity, "Review submitted successfully", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
+            override fun onFailure(call: Call<ApiReview>, t: Throwable) {
+                button.isEnabled = true
+                Toast.makeText(this@ReviewActivity, "Server error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/backk" />
+
+            <TextView
+                android:id="@+id/txtFormTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Add Variant"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Variant Name"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etVariantName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Version A"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Price"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etVariantPrice"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="RM"
+            android:inputType="numberDecimal"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Stock Quantity"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etVariantQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Image URL"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etVariantImage"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="https://..."
+            android:inputType="textUri"
+            android:padding="10dp" />
+
+        <Switch
+            android:id="@+id/switchVariantSale"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:text="Variant On Sale" />
+
+        <EditText
+            android:id="@+id/etVariantSalePrice"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Sale Price"
+            android:inputType="numberDecimal"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btnSaveVariant"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="25dp"
+            android:text="Save Variant"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</ScrollView>

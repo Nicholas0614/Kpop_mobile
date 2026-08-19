@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/groupProductsMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="14dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:padding="12dp"
+            android:src="@drawable/outline_arrow_back_24"
+            app:tint="#111111"/>
+
+        <TextView
+            android:id="@+id/txtGroupTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="BABYMONSTER"
+            android:textColor="#111111"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <ImageButton
+                android:id="@+id/btnGroupCart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="Cart"
+                android:padding="11dp"
+                android:src="@drawable/baseline_shopping_cart_24"
+                app:tint="#111111"/>
+
+            <TextView
+                android:id="@+id/txtGroupCartBadge"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/badge_bg"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- WHOLE PAGE SCROLL -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
+
+            <!-- GROUP HERO -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#D5D5D5"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#999999"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="Now"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/txtHeroGroupName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="BABYMONSTER"
+                        android:textColor="#111111"
+                        android:textSize="29sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- PRODUCTS -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="22dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Products"
+                        android:textColor="#111111"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <!-- FILTER -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:clipToPadding="false"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFilterAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:minWidth="0dp"
+                                android:paddingHorizontal="21dp"
+                                android:text="All"
+                                android:textAllCaps="false"
+                                android:textSize="14sp"
+                                app:cornerRadius="23dp"/>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFilterAlbum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:layout_marginStart="9dp"
+                                android:minWidth="0dp"
+                                android:paddingHorizontal="21dp"
+                                android:text="Album"
+                                android:textAllCaps="false"
+                                android:textSize="14sp"
+                                app:cornerRadius="23dp"/>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFilterLightstick"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:layout_marginStart="9dp"
+                                android:minWidth="0dp"
+                                android:paddingHorizontal="21dp"
+                                android:text="Lightstick"
+                                android:textAllCaps="false"
+                                android:textSize="14sp"
+                                app:cornerRadius="23dp"/>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFilterMerch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:layout_marginStart="9dp"
+                                android:minWidth="0dp"
+                                android:paddingHorizontal="21dp"
+                                android:text="Merch"
+                                android:textAllCaps="false"
+                                android:textSize="14sp"
+                                app:cornerRadius="23dp"/>
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <!-- THIS DOES NOT SCROLL -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/groupPageRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:clipToPadding="false"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="12dp"
+                        android:scrollbars="none"/>
+
+                    <TextView
+                        android:id="@+id/txtNoProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:text="No products found"
+                        android:textColor="#888888"
+                        android:textSize="15sp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

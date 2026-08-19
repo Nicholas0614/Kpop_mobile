@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/txtAdminOrderId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order #1"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAdminCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Customer"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/txtAdminPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Payment: PAID"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAdminTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Total: RM0.00"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Order Status"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerOrderStatus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/btnUpdateStatus"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Update Status"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/etTrackingNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:hint="Tracking Number"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btnUpdateTracking"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Save Tracking Number"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

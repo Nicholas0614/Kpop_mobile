@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFF7FB">
+    android:background="#FFF7FB"
+    android:orientation="vertical">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -20,15 +18,17 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/backk"/>
+            android:src="@drawable/outline_arrow_back_24"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="My Cart"
-            android:textStyle="bold"
+            android:textColor="#111111"
             android:textSize="22sp"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold"/>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -43,68 +43,103 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/outline_add_shopping_cart_24"
             android:contentDescription="Empty Cart"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/outline_add_shopping_cart_24"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="Your Cart is Empty"
-            android:textStyle="bold"
-            android:textSize="24sp"
             android:textColor="#333333"
-            android:layout_marginTop="15dp"/>
-
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
-    <!-- Bottom Summary -->
     <LinearLayout
         android:id="@+id/bottomSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#FFFFFF">
+        android:padding="16dp">
 
         <LinearLayout
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:buttonTint="@null"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="Select All"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                app:buttonCompat="@drawable/checkbox_selector"
+                app:buttonTint="@null"/>
 
             <TextView
+                android:id="@+id/txtSelectedCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Total"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:text="0 selected"
+                android:textColor="#777777"
+                android:textSize="13sp"/>
 
-            <TextView
-                android:id="@+id/txtTotal"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RM0"
-                android:textStyle="bold"
-                android:textSize="22sp"/>
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textColor="#777777"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RM0.00"
+                    android:textColor="#111111"
+                    android:textSize="22sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/category_bg"
-            app:backgroundTint="@null"
-            android:text="Checkout"/>
+            android:text="Checkout"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#111111"
+            app:cornerRadius="14dp"/>
 
     </LinearLayout>
 
